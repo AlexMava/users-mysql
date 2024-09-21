@@ -5,8 +5,9 @@ $errors = [];
 $data = [];
 $status_message = 'idle';
 
-function getFib($n) {
-    return round(pow((sqrt(5)+1)/2, $n) / sqrt(5));
+function getFib($n)
+{
+    return round(pow((sqrt(5) + 1) / 2, $n) / sqrt(5));
 }
 
 if (empty($_POST['name'])) {
@@ -25,10 +26,10 @@ if (!empty($errors)) {
     $_number = $_POST['number'];
     $_fib = getFib($_number);
     $_ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    
-    $sqlQ = "INSERT INTO users (username, input, fib, ip) VALUES (?,?,?,?)"; 
-    $stmt = $conn->prepare($sqlQ); 
-    $stmt->bind_param("siis", $_name, $_number, $_fib, $_ip); 
+
+    $sqlQ = "INSERT INTO users (username, input, fib, ip) VALUES (?,?,?,?)";
+    $stmt = $conn->prepare($sqlQ);
+    $stmt->bind_param("siis", $_name, $_number, $_fib, $_ip);
     $insert = $stmt->execute();
 
     if ($insert) {
