@@ -33,14 +33,15 @@ if (!empty($errors)) {
     $insert = $stmt->execute();
 
     if ($insert) {
-        $status_message = "New record created successfully";
+        $status_message = "User $_name has been added!";
+        $data['success'] = true;
     } else {
         $status_message = "Error while creating New Item!";
+        $data['success'] = false;
     }
 
     $conn->close();
 
-    $data['success'] = true;
     $data['message'] = $status_message;
 }
 
